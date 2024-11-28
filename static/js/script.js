@@ -2,6 +2,7 @@ const socket = io();
 const sessionId = sessionStorage.getItem('session_id') || Math.random().toString(36).substr(2, 9);
 sessionStorage.setItem('session_id', sessionId);
 
+// Atualiza a lista de usuários na tabela
 socket.on('atualizar_lista', (usuarios) => {
     const lista = document.getElementById('lista-usuarios');
     lista.innerHTML = ''; // Limpa a tabela atual
@@ -28,11 +29,21 @@ socket.on('atualizar_lista', (usuarios) => {
     });
 });
 
+// Atualiza o status do usuário no cabeçalho
+socket.on('atualizar_status', (data) => {
+    const statusUsuario = document.getElementById('status-usuario');
+    const totalUsuarios = document.getElementById('total-usuarios');
+    statusUsuario.textContent = `Seu código: ${data.session_id} | Pessoas à sua frente: ${data.pessoas_a_frente}`;
+    totalUsuarios.textContent = `Total de usuários logados: ${data.total_usuarios}`;
+});
+
+// Atualiza o timer do usuário atual
 socket.on('atualizar_timer', (data) => {
     document.getElementById('usuario-atual').textContent = data.usuario_atual;
     document.getElementById('timer').textContent = data.timer;
 });
 
+// Atualiza os eventos na tabela
 socket.on('atualizar_eventos', (eventos) => {
     const lista = document.getElementById('eventos-lista');
     lista.innerHTML = ''; // Limpa a tabela atual
