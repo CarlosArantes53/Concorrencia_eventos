@@ -16,7 +16,6 @@ h1, h2, h3, h4 {
     margin: 10px 0;
 }
 
-/* Estilo da Tabela */
 table {
     width: 80%;
     margin: 20px auto;
@@ -51,7 +50,6 @@ tr:hover {
     background-color: #f1f1f1;
 }
 
-/* Botões */
 button {
     padding: 10px 20px;
     margin-top: 20px;
@@ -68,19 +66,16 @@ button:hover {
     background-color: #45a049;
 }
 
-/* Div Centralizada */
 div {
     text-align: center;
     margin: 20px auto;
 }
 
-/* Container de Tabelas Secundárias */
 #eventos-lista-container {
     width: 80%;
     margin: 20px auto;
 }
 
-/* Responsividade */
 @media (max-width: 768px) {
     table {
         width: 100%;
@@ -96,8 +91,6 @@ div {
     }
 }
 
-
-/* Estilo para a tabela */
 #eventos-lista {
     width: 100%;
     border-collapse: collapse;
@@ -118,7 +111,6 @@ div {
     background-color: #f1f1f1;
 }
 
-/* Estilo para o botão */
 .botao-reserva {
     padding: 8px 15px;
     font-size: 1rem;
@@ -139,7 +131,6 @@ div {
     background-color: #0056b3;
 }
 
-/* Classes dinâmicas para vagas */
 .vagas-disponiveis {
     color: green;
     font-weight: bold;
@@ -150,8 +141,6 @@ div {
     font-weight: bold;
 }
 
-
-/* Estilo do botão Administrador */
 .admin-button {
     padding: 10px 20px;
     font-size: 1rem;
@@ -168,12 +157,10 @@ div {
     background-color: green;
 }
 
-/* Estilo do ícone dentro do botão */
 .admin-button i {
     margin-right: 8px;
 }
 
-/* Estilo para os inputs */
 input {
     padding: 12px;
     font-size: 16px;
@@ -190,7 +177,6 @@ input:focus {
     outline: none;
 }
 
-/* Estilo do botão */
 button#adicionar-evento {
     padding: 12px 25px;
     font-size: 16px;
@@ -214,7 +200,6 @@ button#adicionar-evento:disabled {
     cursor: not-allowed;
 }
 
-/* Responsividade */
 @media (max-width: 768px) {
     input, button#adicionar-evento {
         width: 90%;

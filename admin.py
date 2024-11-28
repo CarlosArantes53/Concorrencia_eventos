@@ -1,31 +1,19 @@
 from flask import Blueprint, render_template, request, jsonify
 from flask_socketio import SocketIO
 
-# Criação do blueprint para administração
 admin_bp = Blueprint('admin', __name__)
-socketio = None  # Referência ao SocketIO será atribuída pelo app principal
-
-# Lista para armazenar eventos
-# eventos = [
-#     {"nome": "Conhecendo Java", "vagas": 5},
-#     {"nome": "IA Redragon", "vagas": 10},
-#     {"nome": "Programação Reativa", "vagas": 5},
-#     {"nome": "Privacidade e Segurança", "vagas": 10},
-#     {"nome": "SAP Estrutural", "vagas": 40}
-# ]
+socketio = None 
 
 eventos = []
 
 
 @admin_bp.route('/admin')
 def admin_page():
-    """Rota para a página de administração."""
     return render_template('admin.html')
 
 
 @admin_bp.route('/eventos', methods=['GET', 'POST'])
 def gerenciar_eventos():
-    """Rota para gerenciar eventos."""
     if request.method == 'POST':
         novo_evento = request.json
         nome = novo_evento.get('nome')

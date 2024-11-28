@@ -4,10 +4,9 @@ sessionStorage.setItem('session_id', sessionId);
 
 let pessoasAFrenete = -1;
 
-// Atualiza a lista de usuários na tabela
 socket.on('atualizar_lista', (usuarios) => {
     const lista = document.getElementById('lista-usuarios');
-    lista.innerHTML = ''; // Limpa a tabela atual
+    lista.innerHTML = '';
     usuarios.forEach(usuario => {
         const row = document.createElement('tr');
 
@@ -35,29 +34,18 @@ socket.on('atualizar_status', (data) => {
     const totalUsuarios = document.getElementById('total-usuarios');
     pessoasAFrenete = data.pessoas_a_frente;
 
-    // Adicionando estilo inline
     statusUsuario.innerHTML = `<span style="font-weight: bold; color: blue;">Seu código:</span> ${data.session_id} | <span style="color: green;">Pessoas à sua frente:</span> ${data.pessoas_a_frente}`;
     totalUsuarios.innerHTML = `<span style="color: red;">Total de usuários logados:</span> ${data.total_usuarios}`;
 
-    // Atualiza os botões de reserva
     atualizarBotaoReserva();
 });
-
-// // Atualiza o timer do usuário atual
-// socket.on('atualizar_timer', (data) => {
-//     document.getElementById('usuario-atual').textContent = data.usuario_atual;
-//     document.getElementById('timer').textContent = data.timer;
-// });
-
 
 socket.on('atualizar_timer', (data) => {
     const usuarioAtual = document.getElementById('usuario-atual');
     const timer = document.getElementById('timer');
 
-    // Atualiza o usuário atual com estilos
     usuarioAtual.innerHTML = `<span style="font-weight: bold; color: blue;"></span> ${data.usuario_atual}`;
 
-    // Atualiza o timer com estilos animados
     timer.innerHTML = `
         <span style="font-size: 1.5rem; font-weight: bold; color: green; text-shadow: 0 0 5px #00ff00;">
             ${data.timer}
@@ -66,10 +54,9 @@ socket.on('atualizar_timer', (data) => {
 });
 
 
-// Atualiza os eventos na tabela e adiciona botões de reserva
 socket.on('atualizar_eventos', (eventos) => {
     const lista = document.getElementById('eventos-lista');
-    lista.innerHTML = ''; // Limpa a tabela atual
+    lista.innerHTML = '';
     eventos.forEach(evento => {
         const row = document.createElement('tr');
 
@@ -80,11 +67,10 @@ socket.on('atualizar_eventos', (eventos) => {
         cellNome.textContent = evento.nome;
         cellVagas.textContent = evento.vagas;
 
-        // Criação do botão de reserva
         const botaoReserva = document.createElement('button');
         botaoReserva.textContent = 'Reservar';
-        botaoReserva.dataset.evento = evento.nome; // Associar evento ao botão
-        botaoReserva.disabled = true; // Desabilitado inicialmente
+        botaoReserva.dataset.evento = evento.nome;
+        botaoReserva.disabled = true;
         botaoReserva.addEventListener('click', () => reservarEvento(evento.nome));
 
         cellAcao.appendChild(botaoReserva);
@@ -98,19 +84,13 @@ socket.on('atualizar_eventos', (eventos) => {
     atualizarBotaoReserva();
 });
 
-
-
-
-
-// Atualiza o estado dos botões de reserva com base na posição do usuário na fila
 function atualizarBotaoReserva() {
     const botoes = document.querySelectorAll('#eventos-lista button');
     botoes.forEach(botao => {
-        botao.disabled = pessoasAFrenete > 2; // Habilita somente se houver 2 ou menos pessoas na frente
+        botao.disabled = pessoasAFrenete > 2;
     });
 }
 
-// Lida com o processo de reserva
 function reservarEvento(evento) {
     const nome = prompt('Digite seu nome:');
     const telefone = prompt('Digite seu telefone:');

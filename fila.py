@@ -4,8 +4,8 @@ from time import time, strftime, localtime
 class Fila:
     def __init__(self):
         self.lock = Lock()
-        self.usuarios = []  # Lista de tuplas (session_id, last_moved_time, horario_login)
-
+        self.usuarios = []
+        
     def adicionar_usuario(self, session_id):
         with self.lock:
             if session_id not in [u[0] for u in self.usuarios]:
