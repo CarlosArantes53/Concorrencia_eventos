@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Administração</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+    <script src="{{ url_for('static', filename='js/admin.js') }}" defer></script>
+</head>
+<body>
+    <h1 style="text-align: center;">Administração de Eventos</h1>
+    <div style="text-align: center; margin-top: 50px;">
+        <input type="text" id="evento-input" placeholder="Digite o evento">
+        <button id="adicionar-evento">Adicionar Evento</button>
+    </div>
+    <div style="text-align: center; margin-top: 20px;">
+        <h2>Eventos Cadastrados</h2>
+        <ul id="eventos-lista"></ul>
+    </div>
+</body>
+</html>
