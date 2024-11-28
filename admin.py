@@ -6,12 +6,22 @@ admin_bp = Blueprint('admin', __name__)
 socketio = None  # Referência ao SocketIO será atribuída pelo app principal
 
 # Lista para armazenar eventos
+# eventos = [
+#     {"nome": "Conhecendo Java", "vagas": 5},
+#     {"nome": "IA Redragon", "vagas": 10},
+#     {"nome": "Programação Reativa", "vagas": 5},
+#     {"nome": "Privacidade e Segurança", "vagas": 10},
+#     {"nome": "SAP Estrutural", "vagas": 40}
+# ]
+
 eventos = []
+
 
 @admin_bp.route('/admin')
 def admin_page():
     """Rota para a página de administração."""
     return render_template('admin.html')
+
 
 @admin_bp.route('/eventos', methods=['GET', 'POST'])
 def gerenciar_eventos():
@@ -28,6 +38,9 @@ def gerenciar_eventos():
             return jsonify({'status': 'success', 'evento': evento}), 200
         return jsonify({'status': 'error', 'message': 'Dados inválidos'}), 400
     return jsonify(eventos)
+
+
+
 
 def init_socketio(sio):
     global socketio

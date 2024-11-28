@@ -9,42 +9,49 @@
     <script src="{{ url_for('static', filename='js/script.js') }}" defer></script>
 </head>
 <body>
-    <header style="text-align: center; margin-bottom: 20px;">
-        <h1>Bem-vindo à Fila</h1>
-        <h3 id="status-usuario"></h3>
-        <h4 id="total-usuarios"></h4>
-    </header>
-    <h1 style="text-align: center;">Fila de Usuários Logados</h1>
+<header style="text-align: center; margin-bottom: 20px; position: relative;">
+    <h1>Bem-vindo à Fila</h1>
+    <h3 id="status-usuario"></h3>
+    <h4 id="total-usuarios"></h4>
+
+    <!-- Botão de redirecionamento para admin.html -->
+    <a href="http://127.0.0.1:5000/admin" id="admin-button" class="admin-button"
+       style="position: absolute; right: 20px; top: 50%; transform: translateY(-50%);" target="_blank">
+        🕵🏻‍♂️
+    </a>
+</header>
+
+<h1 style="text-align: center;">Fila de Usuários Logados</h1>
+<table>
+    <thead>
+    <tr>
+        <th>Índice</th>
+        <th>Usuário</th>
+        <th>Horário de Login</th>
+    </tr>
+    </thead>
+    <tbody id="lista-usuarios">
+    <!-- Preenchido dinamicamente -->
+    </tbody>
+</table>
+<div style="text-align: center; margin-top: 20px;">
+    <h2>Usuário Atual: <span id="usuario-atual"></span></h2>
+    <h3>Timer: <span id="timer">30</span> segundos</h3>
+</div>
+
+<div style="margin-top: 50px; text-align: center;">
+    <h2>Eventos</h2>
     <table>
         <thead>
-            <tr>
-                <th>Índice</th>
-                <th>Usuário</th>
-                <th>Horário de Login</th>
-            </tr>
+        <tr>
+            <th>Evento</th>
+            <th>Vagas</th>
+        </tr>
         </thead>
-        <tbody id="lista-usuarios">
-            <!-- Preenchido dinamicamente -->
+        <tbody id="eventos-lista">
+        <!-- Preenchido dinamicamente -->
         </tbody>
     </table>
-    <div style="text-align: center; margin-top: 20px;">
-        <h2>Usuário Atual: <span id="usuario-atual"></span></h2>
-        <h3>Timer: <span id="timer">30</span> segundos</h3>
-    </div>
-
-    <div style="margin-top: 50px; text-align: center;">
-        <h2>Eventos</h2>
-        <table>
-            <thead>
-                <tr>
-                    <th>Evento</th>
-                    <th>Vagas</th>
-                </tr>
-            </thead>
-            <tbody id="eventos-lista">
-                <!-- Preenchido dinamicamente -->
-            </tbody>
-        </table>
-    </div>
+</div>
 </body>
 </html>

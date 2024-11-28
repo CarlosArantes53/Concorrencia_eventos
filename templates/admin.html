@@ -8,27 +8,29 @@
     <script src="{{ url_for('static', filename='js/admin.js') }}" defer></script>
 </head>
 <body>
-    <h1 style="text-align: center;">Administração de Eventos</h1>
-    <div style="text-align: center; margin-top: 50px;">
-        <input type="text" id="evento-nome" placeholder="Digite o nome do evento">
-        <input type="number" id="evento-vagas" placeholder="Digite a quantidade de vagas">
-        <button id="adicionar-evento">Adicionar Evento</button>
-    </div>
-    <div style="margin-top: 50px; text-align: center;">
-        <h2>Eventos</h2>
-        <table>
-            <thead>
-                <tr>
-                    <th>Evento</th>
-                    <th>Vagas</th>
-                    <th>Ações</th>
-                </tr>
-            </thead>
-            <tbody id="eventos-lista">
-                <!-- Preenchido dinamicamente -->
-            </tbody>
-        </table>
-    </div>
-    
+<h1 style="text-align: center;">Administração de Eventos</h1>
+<div style="text-align: center; margin-top: 50px;">
+    <input type="text" id="evento-nome" placeholder="Digite o nome do evento">
+    <input type="number" id="evento-vagas" placeholder="Digite a quantidade de vagas">
+    <button id="adicionar-evento">Adicionar Evento</button>
+
+</div>
+
+<div style="margin-top: 50px; text-align: center;">
+    <h2>Eventos</h2>
+    <table>
+        <thead>
+        <tr>
+            <th>Evento</th>
+            <th>Vagas</th>
+            <th>Ações</th>
+        </tr>
+        </thead>
+        <tbody id="eventos-lista">
+        <!-- Preenchido dinamicamente -->
+        </tbody>
+    </table>
+</div>
+
 </body>
 </html>

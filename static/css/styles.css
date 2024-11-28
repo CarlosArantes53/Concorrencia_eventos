@@ -1,15 +1,222 @@
+/* Configurações Globais */
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f9f9f9;
+    color: #333;
+}
+
+header {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+h1, h2, h3, h4 {
+    margin: 10px 0;
+}
+
+/* Estilo da Tabela */
 table {
-    width: 70%;
+    width: 80%;
     margin: 20px auto;
     border-collapse: collapse;
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
 }
-table, th, td {
-    border: 1px solid black;
-}
+
 th, td {
+    padding: 12px 15px;
+    text-align: center;
+    border: 1px solid #ddd;
+}
+
+th {
+    background-color: #4CAF50;
+    color: white;
+    font-weight: bold;
+}
+
+td {
+    color: #555;
+}
+
+tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+tr:hover {
+    background-color: #f1f1f1;
+}
+
+/* Botões */
+button {
+    padding: 10px 20px;
+    margin-top: 20px;
+    font-size: 16px;
+    color: white;
+    background-color: #4CAF50;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #45a049;
+}
+
+/* Div Centralizada */
+div {
+    text-align: center;
+    margin: 20px auto;
+}
+
+/* Container de Tabelas Secundárias */
+#eventos-lista-container {
+    width: 80%;
+    margin: 20px auto;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+    table {
+        width: 100%;
+    }
+
+    th, td {
+        font-size: 14px;
+        padding: 10px;
+    }
+
+    h1, h2, h3, h4 {
+        font-size: 18px;
+    }
+}
+
+
+/* Estilo para a tabela */
+#eventos-lista {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+#eventos-lista th, #eventos-lista td {
+    border: 1px solid #ddd;
     padding: 10px;
     text-align: center;
 }
-th {
-    background-color: #f2f2f2;
+
+#eventos-lista tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+#eventos-lista tr:hover {
+    background-color: #f1f1f1;
+}
+
+/* Estilo para o botão */
+.botao-reserva {
+    padding: 8px 15px;
+    font-size: 1rem;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    background-color: #007bff;
+    transition: background-color 0.3s ease;
+}
+
+.botao-reserva:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+}
+
+.botao-reserva:hover:not(:disabled) {
+    background-color: #0056b3;
+}
+
+/* Classes dinâmicas para vagas */
+.vagas-disponiveis {
+    color: green;
+    font-weight: bold;
+}
+
+.vagas-esgotadas {
+    color: red;
+    font-weight: bold;
+}
+
+
+/* Estilo do botão Administrador */
+.admin-button {
+    padding: 10px 20px;
+    font-size: 1rem;
+    background-color: green;
+    color: white;
+    border-radius: 5px;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    transition: background-color 0.3s ease;
+}
+
+.admin-button:hover {
+    background-color: green;
+}
+
+/* Estilo do ícone dentro do botão */
+.admin-button i {
+    margin-right: 8px;
+}
+
+/* Estilo para os inputs */
+input {
+    padding: 12px;
+    font-size: 16px;
+    border: 2px solid #ddd;
+    border-radius: 8px;
+    width: 80%;
+    margin-top: 10px;
+    box-sizing: border-box;
+    transition: border-color 0.3s ease;
+}
+
+input:focus {
+    border-color: #4CAF50;
+    outline: none;
+}
+
+/* Estilo do botão */
+button#adicionar-evento {
+    padding: 12px 25px;
+    font-size: 16px;
+    color: white;
+    background-color: #4CAF50;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    margin-top: 20px;
+    transition: background-color 0.3s ease;
+    width: 80%;
+    box-sizing: border-box;
+}
+
+button#adicionar-evento:hover {
+    background-color: #45a049;
+}
+
+button#adicionar-evento:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+    input, button#adicionar-evento {
+        width: 90%;
+    }
 }
