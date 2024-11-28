@@ -35,10 +35,18 @@ socket.on('atualizar_timer', (data) => {
 
 socket.on('atualizar_eventos', (eventos) => {
     const lista = document.getElementById('eventos-lista');
-    lista.innerHTML = '';
+    lista.innerHTML = ''; // Limpa a tabela atual
     eventos.forEach(evento => {
-        const li = document.createElement('li');
-        li.textContent = evento;
-        lista.appendChild(li);
+        const row = document.createElement('tr');
+        
+        const cellNome = document.createElement('td');
+        const cellVagas = document.createElement('td');
+        
+        cellNome.textContent = evento.nome;
+        cellVagas.textContent = evento.vagas;
+
+        row.appendChild(cellNome);
+        row.appendChild(cellVagas);
+        lista.appendChild(row);
     });
 });

@@ -9,7 +9,7 @@ app.secret_key = "sua_chave_secreta"
 socketio = SocketIO(app)
 
 fila = Fila()
-eventos = []  # Lista para armazenar os eventos
+eventos = []  # Lista para armazenar os eventos no formato: {"nome": str, "vagas": int}
 
 def atualizar_timer():
     while True:
@@ -36,12 +36,15 @@ def admin():
 @app.route('/eventos', methods=['GET', 'POST'])
 def gerenciar_eventos():
     if request.method == 'POST':
-        novo_evento = request.json.get('evento')
-        if novo_evento:
-            eventos.append(novo_evento)
+        novo_evento = request.json
+        nome = novo_evento.get('nome')
+        vagas = novo_evento.get('vagas')
+        if nome and isinstance(vagas, int) and vagas > 0:
+            evento = {"nome": nome, "vagas": vagas}
+            eventos.append(evento)
             socketio.emit('atualizar_eventos', eventos)
-            return jsonify({'status': 'success', 'evento': novo_evento}), 200
-        return jsonify({'status': 'error', 'message': 'Evento inválido'}), 400
+            return jsonify({'status': 'success', 'evento': evento}), 200
+        return jsonify({'status': 'error', 'message': 'Dados inválidos'}), 400
     return jsonify(eventos)
 
 @socketio.on('connect')
