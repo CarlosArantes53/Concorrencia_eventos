@@ -1,4 +1,4 @@
-from flask import Flask, render_template, session, request
+from flask import Flask, render_template, session, request, jsonify
 from flask_socketio import SocketIO, join_room, leave_room
 from fila import Fila
 from admin import admin_bp, init_socketio
@@ -36,6 +36,22 @@ def index():
     session['id'] = session_id
     fila.adicionar_usuario(session_id)
     return render_template('index.html')
+reservas = []  # Lista para armazenar reservas no formato {"evento": str, "nome": str, "telefone": str}
+
+@app.route('/reservar', methods=['POST'])
+def reservar():
+    """Rota para processar reservas de eventos."""
+    data = request.json
+    evento = data.get('evento')
+    nome = data.get('nome')
+    telefone = data.get('telefone')
+
+    if not all([evento, nome, telefone]):
+        return jsonify({'status': 'error', 'message': 'Dados incompletos'}), 400
+
+    reserva = {"evento": evento, "nome": nome, "telefone": telefone}
+    reservas.append(reserva)
+    return jsonify({'status': 'success', 'reserva': reserva}), 200
 
 @socketio.on('connect')
 def conectar():
